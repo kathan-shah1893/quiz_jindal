@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cybersecurity Quiz</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: black; /* Make all text black by default */
+    background: white; /* Ensure background is white */
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #E1E8E7;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    margin-bottom: 60px;
+  }
+  .header h1 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  .header img {
+    height: 40px;
+  }
+  .quiz-container {
+    padding: 20px;
+    color: black; /* Reinforce black text in quiz-container */
+  }
+  .play-audio-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+  #navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 10px;
+  }
+  #navigation button {
+    width: 8%;
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+  }
+  #navigation button:hover {
+    background-color: #f0f0f0; /* Light gray on hover instead of pink */
+    color: black;
+  }
+  #navigation button.answered {
+    background-color: #4caf50; /* Green for answered */
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1 style="color: black">Cybersecurity Awareness Quiz</h1>
+    <img src="https://www.jindalstainless.com/wp-content/themes/jsl/assets/images/Logo-Dark.png" alt="JSL Logo">
+  </div>
+
+  <div class="animated-bg"></div>
+  <div class="quiz-container">
+    <form id="quizForm"></form>
+    <div class="nav-controls">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+    </div>
+    <div class="toggle-nav" onclick="toggleNavigation()">Question Navigator</div>
+    <div class="nav-buttons show" id="navigation"></div> <!-- Default visible -->
+    <div id="result"></div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="pageAudio" src="./kbc-awesome-5410.mp3" preload="auto"></audio>
+
+  <script src="app.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("pageAudio");
+      if (audio) {
+        audio.play().catch(err => {
+          console.warn("Autoplay prevented. Showing manual play button.");
+          const playBtn = document.createElement("button");
+          playBtn.innerText = "🔊 Play Audio";
+          playBtn.classList.add("play-audio-btn");
+          playBtn.onclick = () => {
+            audio.play();
+            playBtn.remove();
+          };
+          document.body.appendChild(playBtn);
+        });
+      }
+    });
+
+    function toggleNavigation() {
+      document.getElementById("navigation").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .container { max-width: 800px; margin: auto; }
+    video { max-width: 300px; border-radius: 8px; display: block; margin: 20px auto; }
+    .close-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: crimson;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="close-btn">Please close the Tab Now</p>
+    <div id="result"></div>
+    <!-- <p class="close-btn">Please close the Tab Now</p> -->
+    <!-- <button class="close-btn" onclick="window.close()"></button> -->
+  </div>
+
+  <script>
+    const summary = localStorage.getItem('quizSummary');
+    const gifUrl = localStorage.getItem('resultGif');
+
+    if (summary && gifUrl) {
+      document.getElementById('result').innerHTML = `
+        ${summary}
+        <div style="text-align:center;">
+        
+        </div>
+      `;
+    } else {
+      document.getElementById('result').innerHTML = "<p>No quiz result found.</p>";
+    }
+
+    // Clear localStorage after use
+    localStorage.removeItem('quizSummary');
+    localStorage.removeItem('resultGif');
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+You are given a set of option-wise justifications for multiple-choice questions. Your task is to combine these individual justifications into a single, well-written paragraph. The paragraph should:
+
+* Clearly explain each option’s correctness or incorrectness.
+* Use proper English grammar and punctuation.
+* Separate each option’s explanation with a `<br>` HTML tag at the start to ensure clarity when displayed on a webpage.
+* Maintain the original intent and meaning of each justification.
+
+**Example Input:**
+
+```json
+{
+  "option1": "False – Leaving them on the desk makes them accessible to unauthorized individuals.",
+  "option2": "Correct – Locked cabinets restrict access and protect sensitive information.",
+  "option3": "False – Hiding is not a secure or reliable method.",
+  "option4": "False – Unlocked drawers can be easily accessed by others."
+}
+```
+
+**Expected Output:**
+
+```html
+<br>Option 1 is false because leaving sensitive documents on the desk makes them accessible to unauthorized individuals.  
+<br>Option 2 is correct since locked cabinets restrict access and help protect sensitive information.  
+<br>Option 3 is false because hiding documents is neither a secure nor a reliable method of protection.  
+<br>Option 4 is false as unlocked drawers can be easily accessed by others, compromising security.
+```
